@@ -1,0 +1,70 @@
+{
+  "entities": {
+    "AssistanceRequest": {
+      "title": "AssistanceRequest",
+      "description": "Citizen request for emergency relief supplies",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "category": { "type": "string", "enum": ["food", "books", "clothes"] },
+        "description": { "type": "string" },
+        "address": { "type": "string" },
+        "lat": { "type": "number" },
+        "lng": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "in_progress", "completed"] },
+        "urgency": { "type": "string", "enum": ["high", "medium", "normal"] },
+        "createdAt": { "type": "number" },
+        "completedAt": { "type": "number" },
+        "assignedProviderId": { "type": "string" },
+        "assignedProviderName": { "type": "string" },
+        "birthProofUrl": { "type": "string" },
+        "birthProofName": { "type": "string" },
+        "dateOfBirth": { "type": "string" }
+      },
+      "required": ["name", "phone", "category", "description", "address", "lat", "lng", "status", "createdAt"]
+    },
+    "ServiceProvider": {
+      "title": "ServiceProvider",
+      "description": "NGO, community kitchen, or individual relief provider",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "organizationType": { "type": "string", "enum": ["ngo", "individual_donor", "community_kitchen"] },
+        "category": { "type": "string", "enum": ["food", "books", "clothes", "all"] },
+        "description": { "type": "string" },
+        "address": { "type": "string" },
+        "lat": { "type": "number" },
+        "lng": { "type": "number" },
+        "idProofUrl": { "type": "string" },
+        "idProofName": { "type": "string" },
+        "birthProofUrl": { "type": "string" },
+        "birthProofName": { "type": "string" },
+        "representativeName": { "type": "string" },
+        "representativeDob": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected"] },
+        "isLiveTracking": { "type": "boolean" },
+        "currentLat": { "type": "number" },
+        "currentLng": { "type": "number" },
+        "lastLocationUpdate": { "type": "number" },
+        "createdAt": { "type": "number" },
+        "verifiedAt": { "type": "number" },
+        "missionsCompleted": { "type": "number" }
+      },
+      "required": ["name", "phone", "organizationType", "category", "description", "address", "lat", "lng", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/assistance_requests_zero_start/{requestId}": {
+      "schema": "AssistanceRequest",
+      "description": "Collection of emergency assistance requests"
+    },
+    "/service_providers_zero_start/{providerId}": {
+      "schema": "ServiceProvider",
+      "description": "Collection of registered relief service providers and NGOs"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Community Connect | कम्युनिटी कनेक्ट",
+  "description": "Zero Hunger. 100% Direct Relief. Neighborhood-driven relief distribution network connecting urgent assistance requests with verified local NGOs, donors, and relief missions.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
